@@ -1,0 +1,42 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>signup page</title>
+</head>
+<body>
+  <center>
+  <div class="registration-form">
+    <h1 style="color:tomato;">Registration Form</h1>
+
+    {% for message in messages %}
+        <h6 style="text-align: center; font-size: 18px;"><mark style="color: rgb(126, 71, 255);">{{ message }}</mark></h6>
+    {% endfor %}
+
+    <form method="post">
+        {% csrf_token %}
+        <p>First Name:</p>
+        <input type="text" name="firstname" placeholder="First Name">
+        <p>Middle Name:</p>
+        <input type="text" name="middlename" placeholder="Middle Name">
+        <p>Last Name:</p>
+        <input type="text" name="lastname" placeholder="Last Name">
+        <p>Username:</p>
+        <input type="text" name="username" placeholder="Username">
+        <p>Email:</p>
+        <input type="email" name="email" placeholder="Email">
+        <p>Password:</p>
+        <input type="password" name="password" placeholder="Password">
+        <button type="submit"> Register </button>
+        <p>Already Registered? <a style="color: white;" href="{% url 'login' %}"> Login</a></p>
+    </form>
+</div>
+</center>
+</body>
+</html>
+{% endblock %}
